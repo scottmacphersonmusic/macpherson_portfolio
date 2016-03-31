@@ -11,9 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160331230947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "transcriptions", force: :cascade do |t|
+    t.string   "song_title"
+    t.string   "soloist_first_name"
+    t.string   "soloist_last_name"
+    t.string   "pdf"
+    t.string   "mp3"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
 end
