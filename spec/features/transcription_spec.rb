@@ -2,14 +2,31 @@ require 'rails_helper'
 
 describe 'transcriptions' do
   context 'index' do
-    it 'should list all available transcriptions' do
-      Transcription.create!(song_title: 'Oleo')
-      Transcription.create!(song_title: 'Daahoud')
+    before do
+      Transcription.create!(
+        song_title: 'Oleo',
+        soloist_first_name: 'John',
+        soloist_last_name: 'Coltrane'
+      )
+      Transcription.create!(
+        song_title: 'Daahoud',
+        soloist_first_name: 'Clifford',
+        soloist_last_name: 'Brown'
+      )
 
       visit transcriptions_path
+    end
 
+    it 'should list all available transcriptions' do
       expect(page).to have_content 'Oleo'
       expect(page).to have_content 'Daahoud'
+    end
+
+    it 'should be organized by soloist last name' do
+      solos = page.all('a').map { |solo| solo.text }
+
+      expect(solos.first).to match(/Daahoud/)  # Brown
+      expect(solos.second).to match(/Oleo/)    # Coltrane
     end
   end
 

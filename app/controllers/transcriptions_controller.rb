@@ -1,6 +1,6 @@
 class TranscriptionsController < ApplicationController
   def index
-    @transcriptions = Transcription.all
+    @transcriptions = Transcription.order(:soloist_last_name)
   end
 
   def show
