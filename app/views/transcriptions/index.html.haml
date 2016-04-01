@@ -1,0 +1,6 @@
+%h1 Transcriptions
+%ul
+  - @transcriptions.each do |trans|
+    %li
+      %em #{ link_to(trans.song_title, trans) }
+      \ ~ #{trans.soloist_last_name}, #{trans.soloist_first_name}

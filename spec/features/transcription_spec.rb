@@ -15,7 +15,7 @@ describe 'transcriptions' do
 
   context 'show' do
     before do
-      @oleo = Transcription.create!(
+      Transcription.create!(
         song_title: 'Oleo',
         pdf: 'oleo_coltrane.pdf',
         mp3: 'oleo_coltrane.mp3'
