@@ -1,8 +1,10 @@
 <h1>Transcriptions</h1>
 <ul>
   <% @transcriptions.each do |trans| %>
-    <em>
-      <%= link_to(trans.song_title, trans) %>
-    </em> ~ <%= trans.soloist_last_name %>, <%= trans.soloist_first_name %>
+    <li>
+      <em>
+        <%= link_to(trans.song_title, trans) %>
+      </em> ~ <%= trans.soloist_last_name %>, <%= trans.soloist_first_name %>
+    </li>
   <% end %>
 </ul>
