@@ -23,7 +23,7 @@ describe 'transcriptions' do
     end
 
     it 'should be organized by soloist last name' do
-      solos = page.all('a').map { |solo| solo.text }
+      solos = page.all('li a').map { |solo| solo.text }
 
       expect(solos.first).to match(/Daahoud/)  # Brown
       expect(solos.second).to match(/Oleo/)    # Coltrane
@@ -31,11 +31,17 @@ describe 'transcriptions' do
   end
 
   context 'show' do
+    include ActionDispatch::TestProcess
+
     before do
       Transcription.create!(
         song_title: 'Oleo',
-        pdf: 'oleo_coltrane.pdf',
-        mp3: 'oleo_coltrane.mp3'
+        soloist_first_name: 'John',
+        soloist_last_name: 'Coltrane',
+        pdf: Rails.root.join(
+          'spec/fixtures/files/oleo_coltrane.pdf').open,
+        mp3: Rails.root.join(
+          'spec/fixtures/files/oleo_coltrane.mp3').open
       )
 
       visit root_path
@@ -60,6 +66,32 @@ describe 'transcriptions' do
 
     it 'should have a basic audio player' do
       expect(page).to have_xpath('//audio[@src = "/audios/oleo_coltrane.mp3"]')
+    end
+  end
+
+  context 'new/create' do
+    include ActionDispatch::TestProcess
+
+    it 'should allow me to create a new transcription' do
+      visit transcriptions_path
+      click_on 'New Transcription'
+      fill_in 'Song title', with: 'Oleo'
+      fill_in 'Soloist first name', with: 'John'
+      fill_in 'Soloist last name', with: 'Coltrane'
+      attach_file 'Pdf',
+                  Rails.root.join(
+                    'spec/fixtures/files/oleo_coltrane.pdf')
+      attach_file 'mp3',
+                  Rails.root.join(
+                    'spec/fixtures/files/oleo_coltrane.mp3')
+      click_on 'Create Transcription'
+
+      expect(page)
+        .to have_content('Transcription Succesfully Created')
+      expect(page)
+        .to have_xpath('//audio[@src = "/audios/oleo_coltrane.mp3"]')
+      expect(page.find(:xpath, '//iframe')[:src])
+        .to match(/pdfjs\/minimal\?file=.*oleo_coltrane/)
     end
   end
 end
