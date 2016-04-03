@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore files uploaded from tests
+/public/uploads/test_dump

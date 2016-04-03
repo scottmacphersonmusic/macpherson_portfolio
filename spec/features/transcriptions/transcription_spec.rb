@@ -48,6 +48,10 @@ describe 'transcriptions' do
       click_on 'Oleo'
     end
 
+    after do
+      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
+    end
+
     it 'should provide a link to view pdf full-screen in a new tab' do
       full_screen_link = page.find(:xpath, '//a', text: 'View Full Screen')
 
