@@ -3,24 +3,8 @@ require 'rails_helper'
 describe 'transcriptions' do
   context 'index' do
     before do
-      Transcription.create!(
-        song_title: 'Oleo',
-        soloist_first_name: 'John',
-        soloist_last_name: 'Coltrane',
-        pdf: Rails.root.join(
-          'spec/fixtures/files/oleo_coltrane.pdf').open,
-        mp3: Rails.root.join(
-          'spec/fixtures/files/oleo_coltrane.mp3').open
-      )
-      Transcription.create!(
-        song_title: 'Daahoud',
-        soloist_first_name: 'Clifford',
-        soloist_last_name: 'Brown',
-        pdf: Rails.root.join(
-          'spec/fixtures/files/oleo_coltrane.pdf').open,
-        mp3: Rails.root.join(
-          'spec/fixtures/files/oleo_coltrane.mp3').open
-      )
+      create_transcription('Oleo', 'John', 'Coltrane')
+      create_transcription('Daahoud', 'Clifford', 'Brown')
 
       visit transcriptions_path
     end
@@ -34,18 +18,8 @@ describe 'transcriptions' do
   end
 
   context 'show' do
-    include ActionDispatch::TestProcess
-
     before do
-      Transcription.create!(
-        song_title: 'Oleo',
-        soloist_first_name: 'John',
-        soloist_last_name: 'Coltrane',
-        pdf: Rails.root.join(
-          'spec/fixtures/files/oleo_coltrane.pdf').open,
-        mp3: Rails.root.join(
-          'spec/fixtures/files/oleo_coltrane.mp3').open
-      )
+      create_transcription('Oleo', 'John', 'Coltrane')
 
       visit root_path
       click_on 'Oleo'
@@ -75,8 +49,6 @@ describe 'transcriptions' do
   end
 
   context 'new/create' do
-    include ActionDispatch::TestProcess
-
     it 'should allow me to create a new transcription' do
       visit transcriptions_path
       click_on 'New Transcription'
@@ -118,5 +90,19 @@ describe 'transcriptions' do
 
   after do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
+  end
+
+  private
+
+  def create_transcription(song_title, soloist_first_name, soloist_last_name)
+    Transcription.create!(
+        song_title: song_title,
+        soloist_first_name: soloist_first_name,
+        soloist_last_name: soloist_last_name,
+        pdf: Rails.root.join(
+          'spec/fixtures/files/oleo_coltrane.pdf').open,
+        mp3: Rails.root.join(
+          'spec/fixtures/files/oleo_coltrane.mp3').open
+      )
   end
 end
