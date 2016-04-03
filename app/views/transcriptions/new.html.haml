@@ -1,4 +1,11 @@
 %h3 New Transcription
+
+- if @transcription.errors.any?
+  %div The form contains #{pluralize(@transcription.errors.count, 'error')}.
+  %ul
+    - @transcription.errors.full_messages. each do |msg|
+      %li= msg
+
 = form_for @transcription do |f|
   = f.label :song_title
   = f.text_field :song_title

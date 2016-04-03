@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class PdfUploader < CarrierWave::Uploader::Base
+class Mp3Uploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -43,7 +43,7 @@ class PdfUploader < CarrierWave::Uploader::Base
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(pdf)
+    %w(mp3)
   end
 
   # Override the filename of the uploaded files:
@@ -51,7 +51,7 @@ class PdfUploader < CarrierWave::Uploader::Base
   def filename
     # "something.jpg" if original_filename
     "#{ str_underscore(model.song_title) }_" + \
-    "#{ str_underscore(model.soloist_last_name) }.pdf" if original_filename
+    "#{ str_underscore(model.soloist_last_name) }.mp3" if original_filename
   end
 
   private
