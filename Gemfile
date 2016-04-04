@@ -5,6 +5,7 @@ gem 'rails',              '4.2.4'
 
 gem 'carrierwave',        '0.10.0'
 gem 'coffee-rails',       '~> 4.1.0'
+gem 'foundation-rails',   '6.1.2.0'
 gem 'haml',               '4.0.7'
 gem 'jquery-rails',       '4.1.1'
 gem 'pdfjs_viewer-rails', '0.0.7'
