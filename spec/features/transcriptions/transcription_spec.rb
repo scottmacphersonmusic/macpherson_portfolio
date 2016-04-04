@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'transcriptions' do
+  after do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
+  end
+
   context 'index' do
     before do
       create_transcription('Oleo', 'John', 'Coltrane')
@@ -67,6 +71,7 @@ describe 'transcriptions' do
         .to have_content('Transcription Succesfully Created')
       expect(page).to have_content('Oleo')
       expect(page).to have_content('Coltrane')
+      expect(Transcription.count).to eq(1)
     end
 
     it 'shouldnt save a transcription with any empty fields' do
@@ -130,10 +135,6 @@ describe 'transcriptions' do
       expect(page)
         .to_not have_content('Oleo')
     end
-  end
-
-  after do
-    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
   end
 
   private
