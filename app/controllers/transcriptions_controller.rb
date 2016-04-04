@@ -36,6 +36,12 @@ class TranscriptionsController < ApplicationController
     end
   end
 
+  def destroy
+    transcription.destroy
+    flash[:success] = 'Transcription Successfully Deleted'
+    redirect_to transcriptions_path
+  end
+
   private
 
   def transcription_params

@@ -9,7 +9,14 @@
 
 %br
 
-= link_to('Edit', edit_transcription_path(@transcription))
+= link_to 'Edit', edit_transcription_path(@transcription)
+
+%br
+
+= link_to 'Delete',
+  @transcription,
+  method: :delete,
+  data: { confirm: 'If you must...' }
 
 %br
 

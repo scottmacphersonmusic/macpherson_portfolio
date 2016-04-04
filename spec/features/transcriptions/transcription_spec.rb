@@ -118,6 +118,20 @@ describe 'transcriptions' do
     end
   end
 
+  context 'delete' do
+    it 'should allow me to delete an existing transcription' do
+      create_transcription('Oleo', 'John', 'Coltrane')
+      visit transcriptions_path
+      click_on 'Oleo'
+      click_on 'Delete'
+
+      expect(page)
+        .to have_content('Transcription Successfully Deleted')
+      expect(page)
+        .to_not have_content('Oleo')
+    end
+  end
+
   after do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
   end
