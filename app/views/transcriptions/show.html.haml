@@ -1,6 +1,15 @@
+%h3
+  = "#{@transcription.soloist_first_name} #{@transcription.soloist_last_name}"
+  on
+  %em= @transcription.song_title
+
 = link_to 'View Full Screen',
   pdfjs.full_path(file: image_path(@transcription.pdf)),
   target: '_blank'
+
+%br
+
+= link_to('Edit', edit_transcription_path(@transcription))
 
 %br
 

@@ -1,14 +1,11 @@
 class TranscriptionsController < ApplicationController
+  before_action :transcription, only: [:new, :show, :edit]
+
   def index
     @transcriptions = Transcription.order(:soloist_last_name)
   end
 
-  def show
-    @transcription = Transcription.find(params[:id])
-  end
-
   def new
-    @transcription = Transcription.new
   end
 
   def create
@@ -23,6 +20,22 @@ class TranscriptionsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+  end
+
+  def update
+    if transcription.update_attributes(transcription_params)
+      flash[:success] = 'Transcription Successfully Updated'
+      redirect_to transcriptions_path
+    else
+      flash.now[:error] = 'There was a problem updating your transcription'
+      render :edit
+    end
+  end
+
   private
 
   def transcription_params
@@ -34,5 +47,10 @@ class TranscriptionsController < ApplicationController
             :pdf,
             :mp3
           )
+  end
+
+  def transcription
+    @transcription ||=
+      params[:id] ? Transcription.find(params[:id]) : Transcription.new
   end
 end

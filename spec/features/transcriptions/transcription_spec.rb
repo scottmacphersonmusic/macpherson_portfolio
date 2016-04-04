@@ -88,6 +88,36 @@ describe 'transcriptions' do
     end
   end
 
+  context 'edit/update' do
+    before do
+      create_transcription('OLEO', 'JOHN', 'COLTRANE')
+
+      visit transcriptions_path
+      click_on 'OLEO'
+      click_on 'Edit'
+    end
+
+    it 'should allow me to edit an existing transcription' do
+      fill_in 'Song title', with: 'Oleo'
+      click_on 'Update Transcription'
+
+      expect(page)
+        .to have_content('Transcription Successfully Updated')
+      expect(page)
+        .to have_content('Oleo')
+    end
+
+    it 'shouldn\'t update a transcription with empty fields' do
+      fill_in 'Song title', with: ''
+      click_on 'Update Transcription'
+
+      expect(page)
+        .to have_content('There was a problem updating your transcription')
+      expect(page)
+        .to have_content('Song title can\'t be blank')
+    end
+  end
+
   after do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
   end
