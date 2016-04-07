@@ -1,5 +1,7 @@
 - if @transcription.errors.any?
-  %div The form contains #{pluralize(@transcription.errors.count, 'error')}.
-  %ul
-    - @transcription.errors.full_messages. each do |msg|
-      %li= msg
+  .row
+    .large-12.columns
+    The form contains #{pluralize(@transcription.errors.count, 'error')}:
+    %ul
+      - @transcription.errors.full_messages. each do |msg|
+        %li= msg
