@@ -1,17 +1,19 @@
-= form_for @transcription do |f|
-  = f.label :song_title
-  = f.text_field :song_title
-  %br
-  = f.label :soloist_first_name
-  = f.text_field :soloist_first_name
-  %br
-  = f.label :soloist_last_name
-  = f.text_field :soloist_last_name
-  %br
-  = f.label :pdf
-  = f.file_field :pdf
-  %br
-  = f.label :mp3
-  = f.file_field :mp3
-  %br
-  = f.submit
+= form_for @transcription, {class: 'medium-4 medium-offset-4 columns'} do |f|
+  .row
+    .large-12.column
+      = f.label :song_title
+      = f.text_field :song_title
+    .large-12.column
+      = f.label :soloist_first_name
+      = f.text_field :soloist_first_name
+    .large-12.column
+      = f.label :soloist_last_name
+      = f.text_field :soloist_last_name
+    .large-12.column
+      = f.label :pdf
+      = f.file_field :pdf
+    .large-12.column
+      = f.label :mp3
+      = f.file_field :mp3
+    .large-12.column
+      = f.submit submit_button_name, {class: 'button success'}

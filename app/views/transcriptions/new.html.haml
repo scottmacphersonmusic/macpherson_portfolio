@@ -1,5 +1,11 @@
-%h3 New Transcription
+.row
+  .large-12.columns
+    %h1 New Transcription
 
-= render partial: 'error_messages'
+.row
+  .large-12.columns
+    = render partial: 'error_messages'
 
-= render partial: 'form'
+.row
+  .large-4.column
+    = render partial: 'form', locals: { submit_button_name: 'Create Transcription' }
