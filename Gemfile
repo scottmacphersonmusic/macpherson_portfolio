@@ -10,6 +10,7 @@ gem 'haml',               '4.0.7'
 gem 'jquery-rails',       '4.1.1'
 gem 'pdfjs_viewer-rails', '0.0.7'
 gem 'pg',                 '0.18.4'
+gem 'poltergeist',        '1.9.0'
 gem 'sass-rails',         '~> 5.0'
 gem 'uglifier',           '>= 1.3.0'
 
