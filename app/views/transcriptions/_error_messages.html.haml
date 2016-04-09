@@ -1,5 +1,5 @@
 - if @transcription.errors.any?
-  .row
+  .row.error_dialogue
     .large-12.columns
     The form contains #{pluralize(@transcription.errors.count, 'error')}:
     %ul

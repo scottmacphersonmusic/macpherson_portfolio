@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 describe 'error messages' do
-  it 'should require javascript testing to work', js: true do
-    visit transcriptions_path
-    click_on 'javascript'
+  it 'should highlight form fields that have errors' do
+    visit new_transcription_path
+    # fill nothing out
+    click_on 'Create Transcription'
 
-    expect(page).to have_content('JavaScript is getting tested!!!')
+    expect(page.find_all('div.field_with_errors').count).to equal(10)
   end
 end

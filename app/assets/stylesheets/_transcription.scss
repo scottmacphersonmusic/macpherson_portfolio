@@ -1,1 +1,9 @@
+$red: #FF0000;
+
 audio { width: 75% }
+
+div.field_with_errors input {
+  border-style: solid;
+  border-width: 4px;
+  border-color: $red;
+}
