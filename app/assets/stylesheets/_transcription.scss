@@ -1,9 +1,29 @@
-$red: #FF0000;
+$red: #ec5840;
+$green: #3adb76;
 
 audio { width: 75% }
 
 div.field_with_errors input {
   border-style: solid;
-  border-width: 4px;
+  border-width: 0.3em;
   border-color: $red;
+}
+
+/* Flash Messages */
+
+.alert { background-color: $red }
+
+.success { background-color: $green }
+
+.alert-box {
+  padding: 0.7rem;
+  padding-left: 4rem;
+  font-size: 1.2rem;
+
+  #close {
+    float: right;
+    font-size: 2rem;
+    line-height: 1.2rem;
+    padding-right: 0.3rem;
+  }
 }

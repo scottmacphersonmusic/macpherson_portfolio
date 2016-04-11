@@ -12,8 +12,5 @@
 
   %body
     = render partial: 'shared/top_bar'
-
-    - flash.each do |key, message|
-      .alert= message
-
+    = render partial: 'shared/flash'
     = yield
