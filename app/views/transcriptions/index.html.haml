@@ -1,15 +1,21 @@
 .row
   .large-12.columns
-    %h1 Transcriptions
+    %h1.page_header Transcriptions
 
-.row
+.row.new_button_div
   = link_to 'New Transcription', new_transcription_path, class: 'button'
 
 .row
-  .large-8.columns
-    - @transcriptions.each do |trans|
-      .row
-        .large-4.columns
-          %em= link_to trans.song_title, trans
-        .large-4.columns
-          = "#{trans.soloist_first_name} #{trans.soloist_last_name}"
+  .large-6.columns.large-centered
+    %table.hover
+      %thead
+        %tr
+          %th{width: '0.5rem'} Song
+          %th{width: '0.5rem'} Artist
+      %tbody
+        - @transcriptions.each do |trans|
+          %tr
+            %td
+              %em= link_to trans.song_title, trans
+            %td
+              = "#{trans.soloist_first_name} #{trans.soloist_last_name}"
