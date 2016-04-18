@@ -11,10 +11,26 @@
 #transcription_links {
   text-align: center;
   margin-top: 1rem;
-  margin-bottom: 1rem;
 }
 
-audio { width: 75% }
+#audio_player {
+  margin: 1rem;
+  text-align: center;
+
+  audio {
+    width: 75%;
+  }
+}
+
+#min_pdf_viewer {
+  text-align: center;
+
+  iframe {
+    border-width: 0.3rem;
+    border-radius: 0.4rem;
+    border-color: $primary-color
+  }
+}
 
 /* Form */
 

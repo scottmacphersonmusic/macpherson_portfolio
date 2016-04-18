@@ -11,14 +11,14 @@
       data: { confirm: 'If you must...' })
 
 .row
-  .large-12.columns
+  #audio_player.large-12.columns
     = audio_tag @transcription.mp3,
       controls: true,
       preload: 'auto'
 
 
 .row
-  .large-12.columns
+  .large-12.columns#min_pdf_viewer
     %iframe{ src: pdfjs.minimal_path(file: image_path(@transcription.pdf)),
       height: '700px',
       width: '900px' }
