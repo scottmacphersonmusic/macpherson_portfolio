@@ -1,0 +1,79 @@
+@import 'settings';
+
+/* Index */
+
+.page_header { text-align: center }
+
+.new_button_div {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+/* Show */
+
+#transcription_links {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+#audio_player {
+  margin: 1rem;
+  text-align: center;
+
+  audio {
+    width: 75%;
+  }
+}
+
+#min_pdf_viewer {
+  text-align: center;
+
+  iframe {
+    border-width: 0.3rem;
+    border-radius: 0.4rem;
+    border-color: $primary-color
+  }
+}
+
+/* Form */
+
+.transcription_header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+div.field_with_errors input {
+  border-style: solid;
+  border-width: 0.3em;
+  border-color: $alert-color;
+}
+
+.transcription_submit {
+  text-align: center;
+  margin-top: 2rem;
+
+  .button {
+    background-color: $primary-color
+  }
+}
+
+/* Flash Messages */
+
+.alert { background-color: $alert-color }
+
+.success { background-color: $success-color }
+
+.alert-box {
+  padding: 0.7rem;
+  padding-left: 4rem;
+  font-size: 1.2rem;
+
+  #close {
+    float: right;
+    font-size: 2rem;
+    line-height: 1.2rem;
+    padding-right: 0.3rem;
+  }
+}

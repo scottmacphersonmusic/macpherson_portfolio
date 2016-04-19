@@ -1,32 +1,24 @@
-%h3
-  = "#{@transcription.soloist_first_name} #{@transcription.soloist_last_name}"
-  on
-  %em= @transcription.song_title
+.row
+  #transcription_links.large-4.columns.large-centered
+    .hollow.button= link_to('View Full Screen',
+      pdfjs.full_path(file: image_path(@transcription.pdf)),
+      target: '_blank')
+    .hollow.button= link_to('Edit',
+      edit_transcription_path(@transcription))
+    .hollow.button= link_to('Delete',
+      @transcription,
+      method: :delete,
+      data: { confirm: 'If you must...' })
 
-= link_to 'View Full Screen',
-  pdfjs.full_path(file: image_path(@transcription.pdf)),
-  target: '_blank'
+.row
+  #audio_player.large-12.columns
+    = audio_tag @transcription.mp3,
+      controls: true,
+      preload: 'auto'
 
-%br
 
-= link_to 'Edit', edit_transcription_path(@transcription)
-
-%br
-
-= link_to 'Delete',
-  @transcription,
-  method: :delete,
-  data: { confirm: 'If you must...' }
-
-%br
-
-= audio_tag @transcription.mp3,
-  autoplay: true,
-  controls: true,
-  preload: 'auto'
-
-%br
-
-%iframe{ src: pdfjs.minimal_path(file: image_path(@transcription.pdf)),
-  height: '700px',
-  width: '900px' }
+.row
+  .large-12.columns#min_pdf_viewer
+    %iframe{ src: pdfjs.minimal_path(file: image_path(@transcription.pdf)),
+      height: '700px',
+      width: '900px' }

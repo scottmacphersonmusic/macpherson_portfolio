@@ -14,3 +14,6 @@
 
 # Ignore files uploaded from tests
 /public/uploads/test_dump
+
+# Ignore rbenv
+.ruby-version

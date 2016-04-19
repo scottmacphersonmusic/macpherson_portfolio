@@ -14,7 +14,7 @@ describe 'transcriptions' do
     end
 
     it 'should list transcriptions by soloist last name' do
-      solos = page.all('li a').map { |solo| solo.text }
+      solos = page.all('em').map { |solo| solo.text }
 
       expect(solos.first).to match(/Daahoud/)  # Brown
       expect(solos.second).to match(/Oleo/)    # Coltrane
