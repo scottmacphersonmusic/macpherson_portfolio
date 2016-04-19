@@ -4,13 +4,17 @@
 
 .page_header { text-align: center }
 
-.new_button_div { text-align: center }
+.new_button_div {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
 
 /* Show */
 
 #transcription_links {
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
 }
 
 #audio_player {
@@ -34,10 +38,25 @@
 
 /* Form */
 
+.transcription_header {
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 div.field_with_errors input {
   border-style: solid;
   border-width: 0.3em;
   border-color: $alert-color;
+}
+
+.transcription_submit {
+  text-align: center;
+  margin-top: 2rem;
+
+  .button {
+    background-color: $primary-color
+  }
 }
 
 /* Flash Messages */

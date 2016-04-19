@@ -1,10 +1,10 @@
 .row
-  .large-12.columns
+  .large-12.columns.large-centered.transcription_header
     %h1 Edit Transcription
 
 .row
-  .large-12.columns
+  .large-12.columns.large-centered
     = render partial: 'error_messages'
 .row
-  .large-4.columns
+  .large-4.columns.large-centered
     = render partial: 'form', locals: { submit_button_name: 'Update Transcription' }
