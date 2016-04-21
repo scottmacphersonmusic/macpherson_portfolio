@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 describe 'transcriptions' do
+  before do
+    User.create!(
+      email: 'scomo@example.com',
+      password: 'supersecret',
+      password_confirmation: 'supersecret'
+    )
+
+    visit root_path
+    click_on 'Sign In'
+    fill_in 'Email', with: 'scomo@example.com'
+    fill_in 'Password', with: 'supersecret'
+    click_on 'Log in'
+  end
+
   after do
     FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads/test_dump/*"])
   end

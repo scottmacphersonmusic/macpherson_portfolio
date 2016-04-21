@@ -1,5 +1,8 @@
 class TranscriptionsController < ApplicationController
-  before_action :transcription, only: [:new, :show, :edit]
+  before_action :transcription,
+                only: [:new, :show, :edit]
+  before_action :authenticate_user!,
+                only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @transcriptions = Transcription.order(:soloist_last_name)
